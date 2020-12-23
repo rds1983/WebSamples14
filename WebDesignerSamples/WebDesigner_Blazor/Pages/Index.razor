@@ -1,0 +1,22 @@
+﻿@page "/"
+
+@inject IJSRuntime JSRuntime;
+
+<div id="designer-id" style="width: 100%; height: 100%;"></div>
+<div id="file-view-id" style="width: 100%; height: 100%; display: none;"></div>
+<div id="viewer-container-id" class="theme-default" style="width: 100%; height: 100%; display: none;"></div>
+<div id="save-as-dialog-id" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; z-index: 9999;"></div>
+<div id="data-set-picker-dialog-id" style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;display: none;z-index: 9999;background-color: #dedede;"></div>
+<div id="data-source-editor-dialog-id"></div>
+
+@code {
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("initDesigner");
+        }
+    }
+
+}
